@@ -1,10 +1,5 @@
-#include <assert.h>
-#include <sched.h>
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <time.h>
 #include <pthread.h>
 #include <chrono>
 
@@ -36,8 +31,6 @@ void * Rectangle_method(void *tmp)
 
 int main(int argc, char** argv)
 {   
-    //clock_t start, end;
-    //start = clock();
     auto start = std::chrono::steady_clock::now();
     long int n = strtol(argv[1], NULL, 10), k = strtol(argv[2], NULL, 10);
     double a = 0.0, b = 1.0, sum = 0.0;
@@ -61,8 +54,6 @@ int main(int argc, char** argv)
     }
 
     printf("%f\n", sum);
-    //end = clock();
-    //double time = (double) (end - start) / (CLOCKS_PER_SEC);
     auto end = std::chrono::steady_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
     printf("Elapsed time: %lf sec\n", elapsed.count()/ 1.0E6);
