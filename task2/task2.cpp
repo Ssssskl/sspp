@@ -5,10 +5,6 @@
 
 using namespace std;
 
-bool done = false;
-pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t cput = PTHREAD_COND_INITIALIZER;
-pthread_cond_t cget = PTHREAD_COND_INITIALIZER;
 int num_active_prod = 0;
 
 class MyConcurrentQueue {
@@ -62,6 +58,10 @@ class MyConcurrentQueue {
     private:
         long unsigned int queue_limit;
         queue<long unsigned int> queue_q;
+        bool done = false;
+        pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
+        pthread_cond_t cput = PTHREAD_COND_INITIALIZER;
+        pthread_cond_t cget = PTHREAD_COND_INITIALIZER;
         
 };
 
