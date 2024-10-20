@@ -2,6 +2,7 @@
     "files.associations": {
         "unistd.h": "c",
         "ratio": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "chrono": "cpp"
     }
 }
