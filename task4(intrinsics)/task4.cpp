@@ -38,6 +38,18 @@ void matrix_multiply_vectorized(double *A, double *B, double *C, int num)
     }
 }
 
+bool compare (double *C_seq, double *C_vec, int num)
+{
+    for (int i = 0; i < num; i++)
+    {
+        for (int j = 0; j < num; j++)
+        {
+            double dif = C_seq[j * num + i] - C_vec[j * num + i];
+            if (dif > 1e-5) return false;
+        }
+    }
+    return true;
+}
 
 int main() {
 
@@ -68,6 +80,12 @@ int main() {
         auto end2 = std::chrono::steady_clock::now();
         auto elapsed2 = std::chrono::duration_cast<std::chrono::microseconds>(end2 - start2);
         printf("Vectorized multiplication time: %lf sec\n", elapsed2.count()/ 1.0E6);
+
+        bool res = compare(C_seq, C_vec, num);
+        if (res) 
+            printf("Results are equal\n");
+        else
+            printf("Results are not equal\n");
 
         _mm_free(A);
         _mm_free(B);
