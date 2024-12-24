@@ -147,9 +147,10 @@ int main(int argc, char *argv[])
     MPI_Reduce(&num_in_part_new, &num, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
     MPI_Reduce(&end_time, &max_time, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
     
-    if (rank == 0) {
+    if (rank == 0) 
+    {
         printf("Число живых клеток: %d\n", num);
-        printf("Время выполнения: %f секунд.\n", max_time);
+        printf("Время выполнения: %f сек\n", max_time);
     }
 
     MPI_Finalize();
